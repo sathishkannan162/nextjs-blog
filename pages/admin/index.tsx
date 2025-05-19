@@ -2,18 +2,18 @@ import { Button } from "@/components/ui/button";
 import {
 	Table,
 	TableBody,
-	TableCell,
 	TableHead,
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
 import { sleep } from "@/lib/utils";
-import { Loader, Pencil, PlusCircle, Trash2 } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import type { GetServerSideProps } from "next";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 import type { Post } from "../../types/post";
+import { PostRow } from "@/components/table/post-row";
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const authenticated = true; // NOTE: change to false to simulate non-admin users
@@ -27,67 +27,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	return { props: { posts: posts.slice(0, 10) } };
 };
 
-function PostRow({
-	post,
-	onEdit,
-	onDelete,
-}: {
-	post: Post;
-	onEdit: (id: number) => Promise<void>;
-	onDelete: (id: number) => Promise<void>;
-}) {
-	const [isEditing, setIsEditing] = useState(false);
-	const [isDeleting, setIsDeleting] = useState(false);
-
-	return (
-		<TableRow key={post.id}>
-			<TableCell className="font-medium">{post.id}</TableCell>
-			<TableCell className="font-medium">
-				{post.title.charAt(0).toUpperCase() + post.title.slice(1)}
-			</TableCell>
-			<TableCell className="hidden md:table-cell text-muted-foreground">
-				{post.body.slice(0, 60)}...
-			</TableCell>
-			<TableCell>
-				<div className="flex items-center gap-2">
-					<Button
-						variant="ghost"
-						size="icon"
-						onClick={async () => {
-							setIsEditing(true);
-							await onEdit(post.id);
-							setIsEditing(false);
-						}}
-					>
-						{isEditing ? (
-							<Loader className="h-4 w-4" />
-						) : (
-							<Pencil className="h-4 w-4" />
-						)}
-						<span className="sr-only">Edit</span>
-					</Button>
-					<Button
-						variant="ghost"
-						size="icon"
-						className="text-destructive"
-						onClick={async () => {
-							setIsDeleting(true);
-							await onDelete(post.id);
-							setIsDeleting(false);
-						}}
-					>
-						{isDeleting ? (
-							<Loader className="h-4 w-4" />
-						) : (
-							<Trash2 className="h-4 w-4" />
-						)}
-						<span className="sr-only">Delete</span>
-					</Button>
-				</div>
-			</TableCell>
-		</TableRow>
-	);
-}
 
 export default function AdminDashboard({ posts }: { posts: Post[] }) {
 	const [postList, setPostList] = useState(posts);

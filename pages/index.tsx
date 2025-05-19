@@ -1,15 +1,7 @@
-import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
 import type { GetStaticProps } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import type { Post } from "../types/post";
+import { BlogCard } from "@/components/blog/blog-card";
 
 export const getStaticProps: GetStaticProps = async () => {
 	const res = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -18,6 +10,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		props: { posts: posts.slice(0, 10) },
 	};
 };
+
 
 export default function Home({ posts }: { posts: Post[] }) {
 	return (
@@ -74,33 +67,7 @@ export default function Home({ posts }: { posts: Post[] }) {
 
 								<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
 									{posts.map((post) => (
-										<article
-											key={post.id}
-											className="flex flex-col h-full overflow-hidden hover:shadow-lg"
-										>
-											<Card>
-												<CardHeader className="pb-0">
-													<CardTitle className="line-clamp-2 text-xl font-bold">
-														{post.title.charAt(0).toUpperCase() +
-															post.title.slice(1)}
-													</CardTitle>
-												</CardHeader>
-												<CardContent className="py-4 flex-grow">
-													<p className="line-clamp-3 text-gray-500">
-														{post.body.charAt(0).toUpperCase() +
-															post.body.slice(1)}
-													</p>
-												</CardContent>
-												<CardFooter className="pt-0">
-													<Link
-														href={`/blog/${post.id}`}
-														className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-													>
-														Read more <ArrowRight className="h-4 w-4" />
-													</Link>
-												</CardFooter>
-											</Card>
-										</article>
+										<BlogCard key={post.id} post={post} />
 									))}
 								</div>
 							</div>
