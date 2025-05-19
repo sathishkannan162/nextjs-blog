@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { sleep } from "@/lib/utils";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -32,6 +33,7 @@ export default function CreateBlog() {
 				body: JSON.stringify({ title, body }),
 				headers: { "Content-Type": "application/json" },
 			});
+			await sleep(1000);
 
 			if (!response.ok) throw new Error("Failed to create post");
 
@@ -44,7 +46,7 @@ export default function CreateBlog() {
 
 			router.push("/admin");
 		} catch (error) {
-			toast.warning("Error" );
+			toast.warning("Error");
 		} finally {
 			setIsSubmitting(false);
 		}
