@@ -45,6 +45,38 @@ export default function BlogDetail({ post }: { post: Post }) {
 			<Head>
 				<title>{formattedTitle}</title>
 				<meta name="description" content={body.slice(0, 100)} />
+				<meta name="robots" content="index, follow" />
+
+				<meta
+					property="og:title"
+					content={`${formattedTitle} | Your Blog Name`}
+				/>
+				<meta property="og:description" content={body.slice(0, 150)} />
+				<meta property="og:type" content="article" />
+				<meta
+					property="og:url"
+					content={`https://sathishkannan.com/blog/${post.id}`}
+				/>
+				<meta
+					property="og:image"
+					content={"https://sathishkannan.com/default-og.jpg"}
+				/>
+
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta
+					name="twitter:title"
+					content={`${formattedTitle} | Your Blog Name`}
+				/>
+				<meta name="twitter:description" content={body.slice(0, 150)} />
+				<meta
+					name="twitter:image"
+					content={"https://sathishkannan.com/default-og.jpg"}
+				/>
+
+				<link
+					rel="canonical"
+					href={`https://sathishkannan.com/blog/${post.id}`}
+				/>
 			</Head>
 
 			<main className="w-full min-h-screen bg-gray-50 py-16 px-4 sm:px-6">

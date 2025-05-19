@@ -25,6 +25,22 @@ export default function Home({ posts }: { posts: Post[] }) {
 			<Head>
 				<title>Blog Home</title>
 				<meta name="description" content="List of blog posts" />
+				<meta name="robots" content="index, follow" />
+				<meta property="og:title" content="Blog Home" />
+				<meta property="og:description" content="List of blog posts" />
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="https://sathishkannan.com" />
+				<meta
+					property="og:image"
+					content="https://sathishkannan.com/og-image.jpg"
+				/>
+				<meta name="twitter:card" content="Blog page" />
+				<meta name="twitter:title" content="Blog Home" />
+				<meta name="twitter:description" content="List of blog posts" />
+				<meta
+					name="twitter:image"
+					content="https://sathishkannan.com/og-image.jpg"
+				/>
 			</Head>
 
 			<main className="w-full bg-gray-50">
