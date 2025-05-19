@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import type { Post } from "../../types/post";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -12,7 +13,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		params: { id: post.id.toString() },
 	}));
 
-	return { paths, fallback: "blocking" };
+	return { paths, fallback: true }; 
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -25,6 +26,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function BlogDetail({ post }: { post: Post }) {
+	const router = useRouter();
+
+	if (router.isFallback) {
+		return (
+			<main className="w-full min-h-screen bg-gradient-to-b from-white to-gray-50 py-16 px-4 sm:px-6">
+				<p className="text-lg text-gray-500 animate-pulse">Loading post...</p>
+			</main>
+		);
+	}
+
 	const body = post.body;
 	const formattedTitle =
 		post.title.charAt(0).toUpperCase() + post.title.slice(1);
