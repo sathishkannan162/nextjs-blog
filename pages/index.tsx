@@ -26,10 +26,11 @@ export default function Home({ posts }: { posts: Post[] }) {
 				<title>Blog Home</title>
 				<meta name="description" content="List of blog posts" />
 			</Head>
+
 			<main className="w-full bg-gray-50">
 				<div className="flex items-center justify-center">
 					<div className="min-h-screen">
-						<section className="w-full py-12 md:py-24 lg:py-32 border-b">
+						<header className="w-full py-12 md:py-24 lg:py-32 border-b">
 							<div className="container px-4 md:px-6">
 								<div className="flex flex-col items-center justify-center space-y-4 text-center">
 									<div className="space-y-2">
@@ -42,22 +43,26 @@ export default function Home({ posts }: { posts: Post[] }) {
 									</div>
 								</div>
 							</div>
-						</section>
+						</header>
 
 						<section className="w-full py-12 md:py-24">
 							<div className="container px-4 md:px-6">
-								<div className="flex flex-col start gap-4">
-									<h2 className="text-2xl font-bold md:text-3xl">
+								<header className="mb-6">
+									<h2
+										id="latest-posts-heading"
+										className="text-2xl font-bold md:text-3xl"
+									>
 										Latest Posts
 									</h2>
+								</header>
 
-									<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
-										{posts.map((post) => (
-                      // move to separate component
-											<Card
-												key={post.id}
-												className="flex flex-col h-full overflow-hidden hover:shadow-lg"
-											>
+								<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
+									{posts.map((post) => (
+										<article
+											key={post.id}
+											className="flex flex-col h-full overflow-hidden hover:shadow-lg"
+										>
+											<Card>
 												<CardHeader className="pb-0">
 													<CardTitle className="line-clamp-2 text-xl font-bold">
 														{post.title.charAt(0).toUpperCase() +
@@ -79,8 +84,8 @@ export default function Home({ posts }: { posts: Post[] }) {
 													</Link>
 												</CardFooter>
 											</Card>
-										))}
-									</div>
+										</article>
+									))}
 								</div>
 							</div>
 						</section>

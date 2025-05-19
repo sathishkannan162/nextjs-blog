@@ -49,13 +49,15 @@ export default function BlogDetail({ post }: { post: Post }) {
 
 			<main className="w-full min-h-screen bg-gray-50 py-16 px-4 sm:px-6">
 				<article className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl p-8 sm:p-10 hover:shadow-2xl">
-					<Link
-						href="/"
-						className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-800 mb-6"
-					>
-						<ArrowLeft className="h-4 w-4 mr-2" />
-						Back to all posts
-					</Link>
+					<nav className="mb-6">
+						<Link
+							href="/"
+							className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-800 mb-6"
+						>
+							<ArrowLeft className="h-4 w-4 mr-2" />
+							Back to all posts
+						</Link>
+					</nav>
 
 					<header className="mb-8 border-b border-gray-200 pb-6">
 						<h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
@@ -63,7 +65,9 @@ export default function BlogDetail({ post }: { post: Post }) {
 						</h1>
 					</header>
 
-					<div className="prose prose-lg max-w-none text-gray-800">{body}</div>
+					<section className="prose prose-lg max-w-none text-gray-800">
+						{body}
+					</section>
 
 					<div className="mt-12 pt-8 border-t border-gray-200" />
 				</article>
