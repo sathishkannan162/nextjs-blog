@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	return { props: { post } };
 };
 
-export default function BlogDetail({ post }: { post: Post }) {
+export default function Blog({ post }: { post: Post }) {
 	const router = useRouter();
 
 	if (router.isFallback) {
