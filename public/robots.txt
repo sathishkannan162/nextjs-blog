@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sathishkannan.com
+
+# Sitemaps
+Sitemap: https://sathishkannan.com/sitemap.xml

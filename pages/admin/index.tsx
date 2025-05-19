@@ -16,7 +16,7 @@ import { toast } from "sonner";
 import type { Post } from "../../types/post";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const authenticated = true; // change to false to simulate non-admin users
+	const authenticated = true; // NOTE: change to false to simulate non-admin users
 	if (!authenticated) {
 		return { redirect: { destination: "/", permanent: false } };
 	}
@@ -137,6 +137,7 @@ export default function AdminDashboard({ posts }: { posts: Post[] }) {
 									<TableBody>
 										{postList.map((post) => (
 											<PostRow
+												key={post.id}
 												post={post}
 												onEdit={handleEdit}
 												onDelete={handleDelete}
