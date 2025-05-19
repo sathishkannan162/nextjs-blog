@@ -58,7 +58,7 @@ export default function BlogDetail({ post }: { post: Post }) {
 					</Link>
 
 					<header className="mb-8 border-b border-gray-200 pb-6">
-						<h1 className="text-3xl sm:text-4xl font-bold leading-tight text-gray-900">
+						<h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
 							{formattedTitle}
 						</h1>
 					</header>

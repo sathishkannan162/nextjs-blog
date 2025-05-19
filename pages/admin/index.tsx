@@ -45,7 +45,7 @@ function PostRow({
 			<TableCell className="font-medium">
 				{post.title.charAt(0).toUpperCase() + post.title.slice(1)}
 			</TableCell>
-			<TableCell className="md:table-cell text-muted-foreground">
+			<TableCell className="hidden md:table-cell text-muted-foreground">
 				{post.body.slice(0, 60)}...
 			</TableCell>
 			<TableCell>
@@ -105,7 +105,7 @@ export default function AdminDashboard({ posts }: { posts: Post[] }) {
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-50 w-full bg-gray-50">
+		<div className="min-h-screen w-full bg-gray-50">
 			<div className="flex min-h-screen">
 				<main className="flex-1 overflow-auto p-6 md:p-8">
 					<div className="flex flex-col gap-6">
@@ -121,7 +121,7 @@ export default function AdminDashboard({ posts }: { posts: Post[] }) {
 							</Link>
 						</div>
 
-						<div className="rounded-lg border bg-card">
+						<div className="rounded-lg border bg-white">
 							<div className="overflow-x-auto">
 								<Table>
 									<TableHeader>

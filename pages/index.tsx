@@ -28,15 +28,15 @@ export default function Home({ posts }: { posts: Post[] }) {
 			</Head>
 			<main className="w-full bg-gray-50">
 				<div className="flex items-center justify-center">
-					<div className="min-h-screen bg-gray-50">
+					<div className="min-h-screen">
 						<section className="w-full py-12 md:py-24 lg:py-32 border-b">
 							<div className="container px-4 md:px-6">
 								<div className="flex flex-col items-center justify-center space-y-4 text-center">
 									<div className="space-y-2">
-										<h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+										<h1 className="text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl">
 											Welcome to Our Blog
 										</h1>
-										<p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
+										<p className="mx-auto text-gray-500 md:text-xl">
 											Discover insightful blogs
 										</p>
 									</div>
@@ -46,18 +46,17 @@ export default function Home({ posts }: { posts: Post[] }) {
 
 						<section className="w-full py-12 md:py-24">
 							<div className="container px-4 md:px-6">
-								<div className="flex flex-col items-start gap-4">
-									<div className="space-y-2">
-										<h2 className="text-2xl font-bold tracking-tighter md:text-3xl">
-											Latest Posts
-										</h2>
-									</div>
+								<div className="flex flex-col start gap-4">
+									<h2 className="text-2xl font-bold md:text-3xl">
+										Latest Posts
+									</h2>
 
 									<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
 										{posts.map((post) => (
+                      // move to separate component
 											<Card
 												key={post.id}
-												className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg"
+												className="flex flex-col h-full overflow-hidden hover:shadow-lg"
 											>
 												<CardHeader className="pb-0">
 													<CardTitle className="line-clamp-2 text-xl font-bold">
