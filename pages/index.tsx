@@ -1,49 +1,103 @@
-// import { Geist, Geist_Mono } from "next/font/google";
-import { GetStaticProps } from 'next';
-import Link from 'next/link';
-import Head from 'next/head';
-import { Post } from '../types/post';
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-//
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
+import type { GetStaticProps } from "next";
+import Head from "next/head";
+import Link from "next/link";
+import type { Post } from "../types/post";
 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const posts: Post[] = await res.json();
-  return {
-    props: { posts: posts.slice(0, 10) }, 
-  };
+	const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+	const posts: Post[] = await res.json();
+	return {
+		props: { posts: posts.slice(0, 10) },
+	};
 };
 
 export default function Home({ posts }: { posts: Post[] }) {
-  return (
-    <>
-      <Head>
-        <title>Blog Home</title>
-        <meta name="description" content="List of blog posts" />
-      </Head>
-      <div className="p-8">
-        <h1 className="text-2xl font-bold mb-4">Blog Posts</h1>
-        <div className="space-y-4">
-          {posts.map(post => (
-            <div key={post.id} className="p-4 border rounded shadow">
-              <h2 className="text-xl font-semibold">{post.title}</h2>
-              <p>{post.body.slice(0, 100)}...</p>
-              <Link href={`/blog/${post.id}`} className="text-blue-500">
-                Read more →
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<Head>
+				<title>Blog Home</title>
+				<meta name="description" content="List of blog posts" />
+			</Head>
+			<main>
+				<div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+					<section className="w-full py-12 md:py-24 lg:py-32 border-b">
+						<div className="container px-4 md:px-6">
+							<div className="flex flex-col items-center justify-center space-y-4 text-center">
+								<div className="space-y-2">
+									<h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+										Welcome to Our Blog
+									</h1>
+									<p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
+										Discover insightful articles, tutorials, and stories from
+										our team of writers.
+									</p>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<section className="w-full py-12 md:py-24">
+						<div className="container px-4 md:px-6">
+							<div className="flex flex-col items-start gap-4">
+								<div className="space-y-2">
+									<h2 className="text-2xl font-bold tracking-tighter md:text-3xl">
+										Latest Posts
+									</h2>
+									<p className="text-gray-500">
+										Explore our most recent articles and stay up to date.
+									</p>
+								</div>
+
+								<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
+									{posts.map((post) => (
+										<Card
+											key={post.id}
+											className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg"
+										>
+											<CardHeader className="pb-0">
+												<div className="text-sm text-gray-500 mb-2">
+													{new Date().toLocaleDateString("en-US", {
+														month: "long",
+														day: "numeric",
+														year: "numeric",
+													})}
+												</div>
+												<CardTitle className="line-clamp-2 text-xl font-bold">
+													{post.title.charAt(0).toUpperCase() +
+														post.title.slice(1)}
+												</CardTitle>
+											</CardHeader>
+											<CardContent className="py-4 flex-grow">
+												<p className="line-clamp-3 text-gray-500">
+													{post.body.charAt(0).toUpperCase() +
+														post.body.slice(1)}
+												</p>
+											</CardContent>
+											<CardFooter className="pt-0">
+												<Link
+													href={`/blog/${post.id}`}
+													className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+												>
+													Read more <ArrowRight className="h-4 w-4" />
+												</Link>
+											</CardFooter>
+										</Card>
+									))}
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</main>
+		</>
+	);
 }
