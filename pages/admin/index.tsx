@@ -105,7 +105,7 @@ export default function AdminDashboard({ posts }: { posts: Post[] }) {
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-50 w-full bg-gradient-to-b from-white to-gray-50">
+		<div className="min-h-screen bg-gray-50 w-full bg-gray-50">
 			<div className="flex min-h-screen">
 				<main className="flex-1 overflow-auto p-6 md:p-8">
 					<div className="flex flex-col gap-6">

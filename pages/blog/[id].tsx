@@ -13,7 +13,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		params: { id: post.id.toString() },
 	}));
 
-	return { paths, fallback: true }; 
+	return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -30,7 +30,7 @@ export default function BlogDetail({ post }: { post: Post }) {
 
 	if (router.isFallback) {
 		return (
-			<main className="w-full min-h-screen bg-gradient-to-b from-white to-gray-50 py-16 px-4 sm:px-6">
+			<main className="w-full min-h-screen bg-gray-50 py-16 px-4 sm:px-6">
 				<p className="text-lg text-gray-500 animate-pulse">Loading post...</p>
 			</main>
 		);
@@ -47,7 +47,7 @@ export default function BlogDetail({ post }: { post: Post }) {
 				<meta name="description" content={body.slice(0, 100)} />
 			</Head>
 
-			<main className="w-full min-h-screen bg-gradient-to-b from-white to-gray-50 py-16 px-4 sm:px-6">
+			<main className="w-full min-h-screen bg-gray-50 py-16 px-4 sm:px-6">
 				<article className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl p-8 sm:p-10 hover:shadow-2xl">
 					<Link
 						href="/"

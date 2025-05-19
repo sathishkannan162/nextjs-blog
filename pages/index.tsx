@@ -26,9 +26,9 @@ export default function Home({ posts }: { posts: Post[] }) {
 				<title>Blog Home</title>
 				<meta name="description" content="List of blog posts" />
 			</Head>
-			<main className="w-full bg-gradient-to-b from-white to-gray-50">
+			<main className="w-full bg-gray-50">
 				<div className="flex items-center justify-center">
-					<div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+					<div className="min-h-screen bg-gray-50">
 						<section className="w-full py-12 md:py-24 lg:py-32 border-b">
 							<div className="container px-4 md:px-6">
 								<div className="flex flex-col items-center justify-center space-y-4 text-center">

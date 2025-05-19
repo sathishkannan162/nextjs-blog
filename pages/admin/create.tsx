@@ -53,7 +53,7 @@ export default function CreateBlog() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-50 w-full bg-gradient-to-b from-white to-gray-50 flex justify-center items-center">
+		<div className="min-h-screen bg-gray-50 w-full flex justify-center items-center">
 			<div className="container max-w-4xl py-10">
 				<Button
 					variant="ghost"
