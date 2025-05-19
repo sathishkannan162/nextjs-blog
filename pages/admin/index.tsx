@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import {
 	Table,
 	TableBody,
@@ -9,10 +7,11 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { Pencil, PlusCircle, Search, Trash2 } from "lucide-react";
+import { Pencil, PlusCircle, Trash2 } from "lucide-react";
 import type { GetServerSideProps } from "next";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 import type { Post } from "../../types/post";
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -31,11 +30,12 @@ export default function AdminDashboard({ posts }: { posts: Post[] }) {
 	const [postList, setPostList] = useState(posts);
 
 	const handleDelete = (id: number) => {
+		toast.warning(`You have deleted blog ${id}`);
 		setPostList(postList.filter((p) => p.id !== id));
 	};
 
 	const handleEdit = (id: number) => {
-		alert("you have editing the blog " + id);
+		toast.success(`you have edited blog ${id}`);
 		console.log(`post ${id} edited`);
 	};
 
