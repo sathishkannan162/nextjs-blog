@@ -32,30 +32,29 @@ export default function BlogDetail({ post }: { post: Post }) {
 	return (
 		<>
 			<Head>
-				<title>{post.title}</title>
-				<meta name="description" content={post.body.slice(0, 100)} />
+				<title>{formattedTitle}</title>
+				<meta name="description" content={body.slice(0, 100)} />
 			</Head>
 
-			<main className="w-full bg-gradient-to-b from-white to-gray-50">
-				<article className="min-h-screen max-w-3xl mx-auto px-4 sm:px-6 py-10 bg-gradient-to-b from-white to-gray-50">
+			<main className="w-full min-h-screen bg-gradient-to-b from-white to-gray-50 py-16 px-4 sm:px-6">
+				<article className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl p-8 sm:p-10 hover:shadow-2xl">
 					<Link
 						href="/"
-						className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-gray-900 mb-8 transition-colors"
+						className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-800 mb-6"
 					>
 						<ArrowLeft className="h-4 w-4 mr-2" />
 						Back to all posts
 					</Link>
 
-					<header className="mb-10 border-b pb-8">
-						<h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-4">
+					<header className="mb-8 border-b border-gray-200 pb-6">
+						<h1 className="text-3xl sm:text-4xl font-bold leading-tight text-gray-900">
 							{formattedTitle}
 						</h1>
 					</header>
 
-					<div className="prose prose-lg max-w-none">{body}</div>
+					<div className="prose prose-lg max-w-none text-gray-800">{body}</div>
 
-					<div className="mt-12 pt-8 border-t">
-					</div>
+					<div className="mt-12 pt-8 border-t border-gray-200" />
 				</article>
 			</main>
 		</>
