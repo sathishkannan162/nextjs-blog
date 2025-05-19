@@ -35,8 +35,7 @@ export default function CreateBlog() {
 
 			if (!response.ok) throw new Error("Failed to create post");
 
-			toast("Success", {
-				description: "Your blog has been published.",
+			toast("Blog has been published", {
 				action: {
 					label: "Undo",
 					onClick: () => console.log("Undo"),
@@ -45,9 +44,7 @@ export default function CreateBlog() {
 
 			router.push("/admin");
 		} catch (error) {
-			toast.warning("Error", {
-				description: "Failed to create your blog post. Please try again.",
-			});
+			toast.warning("Error" );
 		} finally {
 			setIsSubmitting(false);
 		}
